@@ -1,0 +1,76 @@
+{
+	// 配置 uni-ui 自动引入
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+		}
+	},
+	//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+				//"enablePullDownRefresh": true
+			}
+		},
+    {
+			"path": "pages/category/index",
+			"style": {
+				"navigationBarTitleText": "分类"
+			}
+		},
+    {
+			"path": "pages/free/index",
+			"style": {
+				"navigationBarTitleText": "9.9包邮"
+			}
+		},
+    {
+			"path": "pages/report/index",
+			"style": {
+				"navigationBarTitleText": "优惠线报"
+			}
+		}
+	],
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#FF2B22",
+    "borderStyle": "white",
+    "backgroundColor": "#F2F2F2",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/images/homePage-0.png",
+        "selectedIconPath": "static/images/homePage.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/category/index",
+        "iconPath": "static/images/category-00.png",
+        "selectedIconPath": "static/images/category.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/free/index",
+        "iconPath": "static/images/99-0.png",
+        "selectedIconPath": "static/images/99.png",
+        "text": "9.9包邮"
+      },
+      {
+        "pagePath": "pages/report/index",
+        "iconPath": "static/images/news-0.png",
+        "selectedIconPath": "static/images/news.png",
+        "text": "优惠线报"
+      }
+    ]
+  },
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-ly-mall",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"backgroundTextStyle": "light"
+	}
+}
