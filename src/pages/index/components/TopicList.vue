@@ -46,7 +46,7 @@ fetchTopicList();
     .swiper-item {
       width: 750rpx;
       .swiper-item-image {
-        padding: 10rpx;
+        padding: 15rpx 10rpx 10rpx 10rpx;
         image {
           width: 730rpx;
           border-radius: 10rpx;

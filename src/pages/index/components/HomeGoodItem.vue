@@ -99,11 +99,11 @@ export default defineComponent({
     font-weight: 400;
     align-items: left;
     //word-break: break-all;
-    overflow: hidden;
-    display: -webkit-box;
-    text-overflow: ellipsis;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    // overflow: hidden;
+    // display: -webkit-box;
+    // text-overflow: ellipsis;
+    // -webkit-box-orient: vertical;
+    // -webkit-line-clamp: 1;
   }
   .good-item-price {
     display: flex;
@@ -183,7 +183,7 @@ export default defineComponent({
     .shop-name {
       color: #333;
       font-weight: 400;
-      font-size: 24rpx;
+      font-size: 22rpx;
       line-height: 36rpx;
       padding: 4rpx;
     }

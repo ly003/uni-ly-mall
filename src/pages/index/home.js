@@ -6,9 +6,11 @@ export const useGoodList = () => {
   const pageSize = ref(10);
   const cid = ref(0);
   const goodList = ref([]);
+  const isFetching = ref(false);
 
   const fetchGoodList = async () => {
-    uni.showLoading();
+    //uni.showLoading();
+    isFetching.value = true;
     try {
       const { data } = await request({
         url: '/api/goods/get-goods-list',
@@ -19,12 +21,16 @@ export const useGoodList = () => {
           cids: cid.value > 0 ? cid.value : undefined,
         }
       });
-      uni.hideLoading()
+      //uni.hideLoading()
 
       if(pageId.value === 1) {
         goodList.value = data.list;
+        isFetching.value = false;
       } else if(pageId.value > 1 && data.list.length > 0) {
         goodList.value.push(...data.list);
+        isFetching.value = false;
+      } else {
+        isFetching.value = false;
       }
 
     } catch (error) {
@@ -59,5 +65,6 @@ export const useGoodList = () => {
     goodList,
     changeCategory,
     loadMore,
+    isFetching,
   }
 }
