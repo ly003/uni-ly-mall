@@ -34,6 +34,25 @@
 			}
 		}
 	],
+  "subPackages": [
+    {
+      "root": "sub-packages",
+      "pages": [
+        {
+          "path": "good-detail/index",
+          "style": {
+            "navigationBarTitleText": "商品详情"
+          }
+        },
+        {
+          "path": "good-judge/index",
+          "style": {
+            "navigationBarTitleText": "商品评价"
+          }
+        }
+      ]
+    }
+  ],
   "tabBar": {
     "color": "#666666",
     "selectedColor": "#FF2B22",

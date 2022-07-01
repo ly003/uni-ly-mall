@@ -1,7 +1,7 @@
 <template>
   <!-- 首页单个商品 -->
   <view>
-    <view class="good-item">
+    <view class="good-item" @click="gotoGoodDetail(goodItem.id, goodItem.goodsId)">
       <view class="good-item-img">
         <image class="main-pic" :src="goodItem.mainPic" />
       </view>
@@ -53,7 +53,7 @@ export default defineComponent({
 
     const gotoGoodDetail = (id: number, goodsId: string) => {
       uni.navigateTo({
-        url: `/pages/goods/detail?id=${id}&goodsId=${goodsId}`,
+        url: `/sub-packages/good-detail/index?id=${id}&goodsId=${goodsId}`,
       });
     };
 

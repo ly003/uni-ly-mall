@@ -1,7 +1,7 @@
 <template>
   <!-- 精选专题 -->
   <view class="topic">
-    <swiper class="topic-swiper" v-if="topicList.length > 0" circular :indicator-dots="true" :autoplay="true" :interval="3000" :duration="500">
+    <swiper class="topic-swiper" circular :indicator-dots="true" :autoplay="true" :interval="3000" :duration="500">
       <swiper-item class="swiper-item" v-for="(item, index) in topicList" :key="index">
         <view class="swiper-item-image">
           <image :src="item.banner[0]" mode="widthFix" />
