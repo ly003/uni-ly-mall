@@ -12,7 +12,8 @@
     <view>
       <HistorySearch />
     </view>
-    <hr style="color: #f6f6f6" />
+    <!-- 分割线 -->
+    <SplitLine />
     <!-- 搜索发现 -->
     <view>
       <SearchDiscover />
@@ -33,6 +34,7 @@ import { ref } from 'vue';
 import NavBar from '@dcloudio/uni-ui/lib/uni-nav-bar/uni-nav-bar.vue';
 import HistorySearch from './components/HistorySearch.vue';
 import SearchDiscover from './components/SearchDiscover.vue';
+import SplitLine from '../../components/SplitLine.vue';
 
 // 返回
 const goBack = () => {
