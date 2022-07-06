@@ -9,8 +9,8 @@
           <span>实时好货</span>
         </view>
       </view>
-      <UniRow class="ranking-row">
-        <UniCol :span="12" class="ranking-col" v-if="rankingList.length > 0">
+      <view class="ranking-row">
+        <view class="ranking-col" v-if="rankingList.length > 0">
           <view class="tanking-pic1">
             <span class="tanking-num1" :style="{ backgroundImage: 'url(' + RANK_1_BG + ')' }">{{ rankingList[0].ranking }}</span>
             <view class="ranking-image">
@@ -23,8 +23,8 @@
           <view class="ranking-my">
             ￥{{ rankingList[0].actualPrice }}
           </view>
-        </UniCol>
-        <UniCol :span="12" class="ranking-col" v-if="rankingList.length > 0">
+        </view>
+        <view class="ranking-col" v-if="rankingList.length > 0">
           <view class="tanking-pic1">
             <span class="tanking-num1" :style="{ backgroundImage: 'url(' + RANK_2_BG + ')' }">{{ rankingList[1].ranking }}</span>
             <view class="ranking-image">
@@ -37,8 +37,8 @@
           <view class="ranking-my">
             ￥{{ rankingList[1].actualPrice }}
           </view>
-        </UniCol>
-      </UniRow>
+        </view>
+      </view>
     </view>
   </view>
 </template>
@@ -111,8 +111,14 @@ fetchRankingList();
       }
     }
     .ranking-row {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
       .ranking-col {
         padding: 0 10rpx 0 0;
+        box-sizing: border-box;
+        display: block;
+        width: 50%;
         .tanking-pic1 {
           position: relative;
           z-index: 0;

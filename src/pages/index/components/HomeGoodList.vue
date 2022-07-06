@@ -63,7 +63,7 @@ const rightGoodList = computed(() => {
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .home-good-list {
   background: #f7f7f7;
   box-sizing: border-box;

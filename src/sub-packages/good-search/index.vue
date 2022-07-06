@@ -1,5 +1,5 @@
 <template>
-  <NavBar class="navbar" fixed statusBar left-icon="left" leftWidth="20px" rightWidth="60px" @clickLeft="goBack">
+  <NavBar class="navbar" fixed statusBar left-icon="left" leftWidth="16px" rightWidth="60px" @clickLeft="goBack">
     <view class="search">
       <input type="text" confirm-type="search" class="search-input" />
       <icon type="clear" class="search-icon" size="16" />

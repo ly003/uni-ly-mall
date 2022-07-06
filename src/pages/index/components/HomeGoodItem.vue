@@ -21,7 +21,7 @@
           </span>
         </view>
         <view class="good-item-sales">
-          月销{{ state.monthSales }}
+          月销 {{ monthSales }}
         </view>
       </view>
       <view class="good-item-shop">
@@ -35,8 +35,8 @@
 </template>
 
 <script lang="ts">
-import { onLoad } from '@dcloudio/uni-app';
-import { defineComponent, reactive } from 'vue'
+import { defineComponent } from 'vue';
+import { computed } from 'vue';
 
 export default defineComponent({
   name: 'HomeGoodItem',
@@ -47,8 +47,18 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const state = reactive({
-      monthSales: ""
+
+    const monthSales = computed(() => {
+      if(props.goodItem && props.goodItem.monthSales) {
+        // 以万为单位保留一位小数
+        if(props.goodItem.monthSales / 10000 >=1) {
+          return (props.goodItem.monthSales / 10000).toFixed(1) + "万";
+        } else {
+          return props.goodItem.monthSales;
+        }
+      } else {
+        return "";
+      }
     })
 
     const gotoGoodDetail = (id: number, goodsId: string) => {
@@ -57,20 +67,9 @@ export default defineComponent({
       });
     };
 
-    onLoad(() => {
-      if(props.goodItem && props.goodItem.monthSales) {
-        // 以万为单位保留一位小数
-        if(props.goodItem.monthSales / 10000 >=1) {
-          state.monthSales = (props.goodItem.monthSales / 10000).toFixed(1) + "万";
-        } else {
-          state.monthSales = props.goodItem.monthSales;
-        }
-      }
-    });
-
     return {
       gotoGoodDetail,
-      state,
+      monthSales,
     }
   },
 })
@@ -133,7 +132,6 @@ export default defineComponent({
     flex-flow: wrap;
     padding: 0 20rpx;
     margin: 10rpx 0;
-    //align-items: center;
     justify-content: space-between;
     .tag-quan {
       box-sizing: border-box;
@@ -164,7 +162,7 @@ export default defineComponent({
     .good-item-sales {
       color: #888;
       font-size: 20rpx;
-      padding: 5rpx 0 0 0;
+      padding: 10rpx 0 0 0;
     }
   }
   .good-item-shop {

@@ -1,5 +1,5 @@
 <template>
-  <NavBar class="navbar" shadow fixed :border="false" backgroundColor="#FF2B22" leftWidth="50px">
+  <NavBar class="navbar" statusBar shadow fixed :border="false" backgroundColor="#FF2B22" leftWidth="50px">
     <view class="navbar-search" @click="goToSearchPage">
       <view class="navbar-search-input-wrapper">
         <text class="iconfont search-icon" style="font-size: 44rpx;color: #fe3738">&#xe6f2;</text>

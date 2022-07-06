@@ -9,8 +9,8 @@
           <view class="ddq-title-countdown">{{ countdown }}</view>
         </view>
       </view>
-      <UniRow class="ddq-row">
-        <UniCol :span="12" class="ddq-col" v-if="ddqList.length > 0">
+      <view class="ddq-row">
+        <view class="ddq-col" v-if="ddqList.length > 0">
           <view class="tanking-pic1">
             <view class="ddq-image">
               <image class="ddq-img" :src="ddqList[0].mainPic" mode="widthFix" />
@@ -22,8 +22,8 @@
           <view class="ddq-my">
             ￥{{ ddqList[0].actualPrice }}
           </view>
-        </UniCol>
-        <UniCol :span="12" class="ddq-col" v-if="ddqList.length > 0">
+        </view>
+        <view class="ddq-col" v-if="ddqList.length > 0">
           <view class="tanking-pic1">
             <view class="ddq-image">
               <image class="ddq-img" :src="ddqList[1].mainPic" mode="widthFix" />
@@ -35,8 +35,8 @@
           <view class="ddq-my">
             ￥{{ ddqList[1].actualPrice }}
           </view>
-        </UniCol>
-      </UniRow>
+        </view>
+      </view>
     </view>
   </view>
 </template>
@@ -169,8 +169,14 @@ const setCountDown = (hour, minute, second, leave) => {
       }
     }
     .ddq-row {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
       .ddq-col {
         padding: 0 10rpx 0 0;
+        box-sizing: border-box;
+        display: block;
+        width: 50%;
         .tanking-pic1 {
           position: relative;
           z-index: 0;

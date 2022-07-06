@@ -1,7 +1,7 @@
 <template>
   <!-- 滚动线报 -->
-  <view class="notice">
-    <view class="notice-content">
+  <view class="notice" v-if="noticeList.length > 0">
+    <view class="notice-content" @click="gotoReportPage()">
       <image class="notice-log" :src="LINE_REPORT" mode="heightFix" />
       <swiper class="notice-swiper" circular :autoplay="true" :interval="3000" :vertical="true" :duration="500" disable-touch>
         <swiper-item class="swiper-item" v-for="(item, index) in noticeList" :key="index" >
@@ -43,6 +43,12 @@ const fetchNoticeList = async () => {
 };
 
 fetchNoticeList();
+
+const gotoReportPage = () => {
+  uni.navigateTo({
+    url: `/sub-packages/good-report/index`,
+  });
+};
 
 </script>
 

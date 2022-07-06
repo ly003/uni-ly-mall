@@ -2,16 +2,27 @@
   <view>
     <HomeNavBar />
     <view class="content">
+      <!-- 精选专题 -->
       <TopicList />
+      <!-- 优惠线报滚动通知 -->
       <Notice />
-      <UniRow class="home-uni-row">
+      <!--UniRow和UniCol组件在微信小程序中不生效 <UniRow class="home-uni-row">
         <UniCol :span="12">
           <GoodsRanking />
         </UniCol>
         <UniCol :span="12">
           <DdqGoods />
         </UniCol>
-      </UniRow>
+      </UniRow> -->
+      <view class="home-row">
+        <view class="home-col-left">
+          <GoodsRanking />
+        </view>
+        <view class="home-col-right">
+          <DdqGoods />
+        </view>
+      </view>
+
       <CategoryTab :cid="cid" @change="changeCategory" />
       <HomeGoodList :goodList="goodList" :isFetching="isFetching" />
       <view class="home-topbtn" @click="gotoTop" :style="{ display: showBtn ? 'block' : 'none' }">
@@ -31,8 +42,8 @@ import { ref } from 'vue'
 import { onReachBottom, onPageScroll } from '@dcloudio/uni-app';
 import TopicList from './components/TopicList.vue';
 import Notice from './components/Notice.vue';
-import UniRow from '@dcloudio/uni-ui/lib/uni-row/uni-row.vue';
-import UniCol from '@dcloudio/uni-ui/lib/uni-col/uni-col.vue';
+import UniRow from '@dcloudio/uni-ui/lib/uni-row/uni-row.vue'; // 微信小程序中不生效
+import UniCol from '@dcloudio/uni-ui/lib/uni-col/uni-col.vue'; // 微信小程序中不生效
 import GoodsRanking from './components/GoodsRanking.vue';
 import DdqGoods from './components/DdqGoods.vue';
 import CategoryTab from './components/CategoryTab.vue';
@@ -80,6 +91,24 @@ onPageScroll((event) => {
     display: block;
     width: 750rpx;
     padding: 0 10rpx 15rpx 10rpx;
+  }
+  .home-row {
+    background: #f7f7f7;
+    box-sizing: border-box;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    padding: 0 10rpx 15rpx 10rpx;
+    .home-col-left {
+      box-sizing: border-box;
+      display: block;
+      width: 50%;
+    }
+    .home-col-right {
+      box-sizing: border-box;
+      display: block;
+      width: 50%;
+    }
   }
   .home-topbtn {
     position: fixed;
