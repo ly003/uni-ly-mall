@@ -46,6 +46,7 @@ const props = defineProps({
   },
 });
 
+
 // 左边商品
 const leftGoodList = computed(() => {
   return props.goodList.filter((_, index) => index % 2 == 0);

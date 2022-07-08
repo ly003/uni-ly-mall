@@ -3,11 +3,11 @@
     <view class="history-title">
       <view class="title-text"> 历史搜索 </view>
       <view>
-        <text class="iconfont" style="color: #666">&#xe645;</text>
+        <text class="iconfont" style="color: #A9A9A9" @click="onClear">&#xe645;</text>
       </view>
     </view>
     <view class="history-content">
-      <span class="history-word" v-for="word, index in historySearch" :key="index">
+      <span class="history-word" v-for="word, index in historySearch" :key="index" @click="submitSearch(word)">
         {{ word }}
       </span>
     </view>
@@ -18,9 +18,19 @@
 defineProps({
   historySearch: {
     type: Array,
-    default: () => ['鞋子女', '连衣裙']
+    default: () => []
   }
 });
+
+const emits = defineEmits(['clear', 'submit'])
+
+const onClear = () => {
+  emits('clear')
+}
+
+const submitSearch = (word) => {
+  emits('submit', word)
+}
 
 </script>
 

@@ -153,7 +153,7 @@
       <view class="good-detail-tuijian">
         <image class="tuijian-img" :src="heart" /> 为你推荐
       </view>
-      <!-- <HomeGoodList :goodList="goodList" /> -->
+      <HomeGoodList :goodList="goodList" />
       <view class="good-detail-bottom"> 我已经到底啦~^_^~ </view>
     </view>
     <view class="good-detail-footer">
@@ -185,7 +185,7 @@ import {
   heart,
 } from "../../utils/constant";
 import GoodFooter from "../../components/GoodFooter.vue";
-// import HomeGoodList from "@/pages/index/components/HomeGoodList.vue";
+import HomeGoodList from "../../pages/index/components/HomeGoodList.vue";
 
 export default defineComponent({
   setup() {
@@ -372,7 +372,7 @@ export default defineComponent({
       previewImage,
     };
   },
-  components: { GoodFooter},
+  components: { GoodFooter, HomeGoodList },
 });
 </script>
 

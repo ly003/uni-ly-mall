@@ -3,11 +3,11 @@
     <view class="discover-title">
       <view class="discover-text"> 搜索发现 </view>
       <view>
-        <text class="iconfont" style="color: #666">&#xe65d;</text>
+        <text class="iconfont" style="color: #A9A9A9" @click="changeWords">&#xe65d;</text>
       </view>
     </view>
     <view class="discover-content">
-      <span class="discover-word" v-for="word, index in searchDiscoverList" :key="index">
+      <span class="discover-word" v-for="word, index in searchDiscoverList" :key="index" @click="submitSearch(word)">
         {{ word }}
       </span>
     </view>
@@ -18,9 +18,18 @@
 defineProps({
   searchDiscoverList: {
     type: Array,
-    default: () => ['螺狮粉', '麻辣香锅']
+    default: () => []
   }
 });
+
+const emits = defineEmits(['change', 'submit'])
+const changeWords = () => {
+  emits('change')
+}
+
+const submitSearch = (word) => {
+  emits('submit', word)
+}
 
 </script>
 
@@ -43,6 +52,7 @@ defineProps({
     display: flex;
     flex-flow: wrap;
     overflow: hidden;
+    padding: 0 40rpx 0 0;
     .discover-word {
       color: #565656;
       font-size: 24rpx;

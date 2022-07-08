@@ -13,6 +13,6 @@ export default {
 <style scoped lang="scss">
 .split-line {
   height: 1px;
-  background: #ebedf0;
+  background: #f5f5f5;
 }
 </style>>
