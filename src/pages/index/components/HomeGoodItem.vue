@@ -81,9 +81,10 @@ export default defineComponent({
   margin: 10rpx 10rpx 20rpx 10rpx;
   border-radius: 10rpx;
   box-sizing: border-box;
-  overflow: hidden;
+  animation: fadein 0.3s cubic-bezier(0.5, 0, 1, 1) forwards;
   .good-item-img {
     .main-pic {
+      will-change: transform;
       border-radius: 10rpx 10rpx 0 0;
       display: block;
       width: 345rpx;

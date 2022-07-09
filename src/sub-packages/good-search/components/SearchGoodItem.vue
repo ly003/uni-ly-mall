@@ -25,7 +25,7 @@
       <view class="shop-sales">
         <view class="shop-title">
           {{ goodItem.shopName }}
-          <UniIcons color="#888" type="forward" />
+          <UniIcons color="#888" type="forward" size="14" />
         </view>
         <view class="sales-num">
           月销 {{ monthSales }}
