@@ -26,7 +26,7 @@
         <view class="associate-list" @click="submitSearch(words.kw)">
           <text class="search-associate-text">{{ words.kw }}</text>
         </view>
-        <SplitLine class="search-line" />
+        <!-- <SplitLine class="search-line" /> -->
       </view>
     </view>
     <!-- 搜索商品列表 -->
@@ -150,6 +150,7 @@ const goBack = () => {
     padding-top: 20rpx;
     .associate-list {
       padding: 0 30rpx 30rpx 30rpx;
+      border-bottom: #f5f5f5 solid 1px;
       .search-associate-text {
         font-size: 28rpx;
         color: #333;
