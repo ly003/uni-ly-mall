@@ -56,6 +56,12 @@
           "style": {
             "navigationStyle": "custom"
           }
+        },
+        {
+          "path": "shop-detail/index",
+          "style": {
+            "navigationBarTitleText": "商家店铺"
+          }
         }
       ]
     }

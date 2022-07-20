@@ -1,34 +1,36 @@
 <template>
   <!-- 首页单个商品 -->
   <view>
-    <view class="good-item" @click="gotoGoodDetail(goodItem.id, goodItem.goodsId)">
-      <view class="good-item-img">
-        <image class="main-pic" :src="goodItem.mainPic" />
-      </view>
-      <view class="good-item-title">{{ goodItem.dtitle }}</view>
-      <view class="good-item-price">
-        <span class="price-qh">券后</span>
-        <view class="price-item">
-          <span class="price-currency">￥</span>
-          <span class="price-money">{{ goodItem.originalPrice }}</span>
+    <view class="good-item">
+      <view @click="gotoGoodDetail(goodItem.id, goodItem.goodsId)">
+        <view class="good-item-img">
+          <image class="main-pic" :src="goodItem.mainPic" />
         </view>
-      </view>
-      <view class="good-item-tag">
-        <view class="tag-quan">
-          <span class="quan-box">
-            <span class="quan-text">券</span>
-            <span class="quan-money">{{ goodItem.couponPrice }}元</span>
-          </span>
+        <view class="good-item-title">{{ goodItem.dtitle }}</view>
+        <view class="good-item-price">
+          <span class="price-qh">券后</span>
+          <view class="price-item">
+            <span class="price-currency">￥</span>
+            <span class="price-money">{{ goodItem.originalPrice }}</span>
+          </view>
         </view>
-        <view class="good-item-sales">
-          月销 {{ monthSales }}
+        <view class="good-item-tag">
+          <view class="tag-quan">
+            <span class="quan-box">
+              <span class="quan-text">券</span>
+              <span class="quan-money">{{ goodItem.couponPrice }}元</span>
+            </span>
+          </view>
+          <view class="good-item-sales">
+            月销 {{ monthSales }}
+          </view>
         </view>
       </view>
       <view class="good-item-shop">
-        <view class="shop-logo">
+        <view class="shop-logo" @click="navigateToShopPage(goodItem.sellerId)">
           <image class="shop-img" :src="goodItem.shopLogo" />
         </view>
-        <view class="shop-name">{{ goodItem.shopName }}</view>
+        <view class="shop-name" @click="navigateToShopPage(goodItem.sellerId)">{{ goodItem.shopName }}</view>
       </view>
     </view>
   </view>
@@ -67,9 +69,16 @@ export default defineComponent({
       });
     };
 
+    const navigateToShopPage = (sellerId: string) => {
+      uni.navigateTo({
+        url: `/sub-packages/shop-detail/index?sellerId=${sellerId}`,
+      });
+    };
+
     return {
       gotoGoodDetail,
       monthSales,
+      navigateToShopPage,
     }
   },
 })

@@ -38,6 +38,15 @@
     </view>
     <!-- 品牌推荐 -->
     <view></view>
+    <!-- 回到顶部按钮 -->
+    <view class="search-topbtn" @click="gotoTop" :style="{ display: showBtn ? 'block' : 'none' }">
+      <view class="search-topbtn-text">
+        <view>
+          <text class="iconfont" style="font-size: 24rpx">&#xe646;</text>
+        </view>
+        <text> 顶部 </text>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -49,6 +58,7 @@ import SearchDiscover from './components/SearchDiscover.vue';
 import SplitLine from '../../components/SplitLine.vue';
 import SearchGoodFilter from './components/SearchGoodFilter.vue';
 import SearchGoodItem from './components/SearchGoodItem.vue';
+import { onPageScroll } from '@dcloudio/uni-app';
 import { useHistorySearch, useSearchDiscover, useSearchSuggestion, useSuperSearch } from './goodSearch.js';
 
 // 搜索框输入值
@@ -56,6 +66,9 @@ const inputValue = ref('');
 
 // 是否显示联想词
 const showAssociate = ref(true);
+
+// 是否显示回到顶部按钮
+const showBtn = ref(false);
 
 // 排序方式
 const sorter = ref(0);
@@ -70,18 +83,15 @@ const { searchGoodList } = useSuperSearch(inputValue, sorter);
 
 const onFocus = () => {
   showAssociate.value = true;
-  console.log('onFocus')
 };
 
 const onClear = () => {
-  console.log('onClear')
   inputValue.value = '';
   showAssociate.value = true;
 };
 
 // 触发搜索
 const onSearch = () => {
-  console.log('onSearch')
   showAssociate.value = false;
   saveHistorySearch(inputValue.value);
 };
@@ -89,18 +99,33 @@ const onSearch = () => {
 const submitSearch = (word) => {
   inputValue.value = word;
   onSearch();
-  console.log('submitSearch')
 };
 
 const changeSort = (sort) => {
   sorter.value = sort;
-  console.log('changeSort')
 };
 
 // 返回
 const goBack = () => {
   uni.navigateBack({
     delta: 1,
+  });
+};
+
+// 根据距离顶部距离是否显示回到顶部按钮
+onPageScroll((event) => {
+  if (event.scrollTop > 400) {
+    //当距离大于400时显示回到顶部按钮
+    showBtn.value = true;
+  } else {
+    showBtn.value = false;
+  }
+});
+
+const gotoTop = async () => {
+  uni.pageScrollTo({
+    scrollTop: 0,
+    duration: 300,
   });
 };
 
@@ -160,10 +185,29 @@ const goBack = () => {
       margin: 0 30rpx;
     }
   }
-}
+  .search-good-list {
+    padding-top: 16rpx;
+  }
+  .search-topbtn {
+    position: fixed;
+    right: 20rpx;
+    bottom: 200rpx;
+    width: 120rpx;
+    z-index: 990;
 
-.search-good-list {
-  padding-top: 16rpx;
+    .search-topbtn-text {
+      margin: 0 auto;
+      width: 80rpx;
+      height: 80rpx;
+      background: #fff;
+      box-shadow: 0 4rpx 16rpx 0 rgb(0 0 0 / 18%);
+      justify-content: center;
+      align-items: center;
+      border-radius: 200rpx;
+      text-align: center;
+      font-size: 22rpx;
+    }
+  }
 }
 
 </style>

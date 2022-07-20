@@ -116,7 +116,7 @@
               <view class="good-detail-shop-title">{{
                   state.goodDetail.shopName
               }}</view>
-              <view class="good-detail-shop-more">
+              <view class="good-detail-shop-more" @click="navigateToShopPage(state.goodDetail.sellerId)">
                 <view class="good-detail-shop-box">
                   <text class="good-detail-shop-font">全部商品</text>
                 </view>
@@ -341,6 +341,12 @@ export default defineComponent({
       });
     };
 
+    const navigateToShopPage = (sellerId) => {
+      uni.navigateTo({
+        url: `/sub-packages/shop-detail/index?sellerId=${sellerId}`,
+      });
+    };
+
     const previewImage = (url, current) => {
       console.log('url', url)
       uni.previewImage({
@@ -370,6 +376,7 @@ export default defineComponent({
       goodComment,
       navigateToJudgePage,
       previewImage,
+      navigateToShopPage,
     };
   },
   components: { GoodFooter, HomeGoodList },

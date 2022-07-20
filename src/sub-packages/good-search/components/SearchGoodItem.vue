@@ -23,7 +23,7 @@
         </view>
       </view>
       <view class="shop-sales">
-        <view class="shop-title">
+        <view class="shop-title" @click.stop="navigateToShopPage(goodItem.sellerId)">
           {{ goodItem.shopName }}
           <UniIcons color="#888" type="forward" size="14" />
         </view>
@@ -62,6 +62,12 @@ const monthSales = computed(() => {
 const gotoGoodDetail = (id, goodsId) => {
   uni.navigateTo({
     url: `/sub-packages/good-detail/index?id=${id}&goodsId=${goodsId}`,
+  });
+};
+
+const navigateToShopPage = (sellerId) => {
+  uni.navigateTo({
+    url: `/sub-packages/shop-detail/index?sellerId=${sellerId}`,
   });
 };
 
